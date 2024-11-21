@@ -11,7 +11,7 @@ const items = [
     // Vehicle Parts
     { itemName: "Brake Pads", link: "/parts/brake-pads" },
     { itemName: "Air Filter", link: "/parts/air-filter" },
-    { itemName: "Oil Filter", link: "/parts/oil-filter" },
+    { itemName: "Oil Filter", link: "/parts/oil-filter", "emoji": "🛢️" },
     { itemName: "Alternator", link: "/parts/alternator" },
 
     // Accessories

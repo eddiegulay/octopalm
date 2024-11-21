@@ -148,7 +148,14 @@ class OctoPalm {
         filteredResults.forEach(item => {
             const resultItem = document.createElement('div');
             resultItem.className = 'opalm-search-result-item';
-            const itemName = item.itemName || item.name || item.label || item.item || 'Unknown Item';
+            let itemName = item.itemName || item.name || item.label || item.item || 'Unknown Item';
+
+            try {
+                if (item.emoji) {
+                    itemName = item.emoji + " " + itemName;
+                }
+            } catch (error) {}
+
             resultItem.innerHTML = `<a href="${item.link}">${itemName}</a>`;
             this.resultsContainer.appendChild(resultItem);
         });
