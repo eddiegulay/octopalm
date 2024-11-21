@@ -15,7 +15,7 @@ const items = [
     { itemName: "Alternator", link: "/parts/alternator" },
 
     // Accessories
-    { itemName: "Car Cover", link: "/accessories/car-cover" },
+    { label: "Car Cover", link: "/accessories/car-cover" },
     { itemName: "Dashboard Camera", link: "/accessories/dashboard-camera" },
     { itemName: "Seat Covers", link: "/accessories/seat-covers" },
     { itemName: "Floor Mats", link: "/accessories/floor-mats" },
