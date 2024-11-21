@@ -14,24 +14,18 @@ class OctoPalm {
             console.error(`Input element with id ${this.inputElement.id} not found.`);
             return;
         }
-
-        // Organize items by their keys
         this.organizeItemsByKey();
-
-        // Listen for input event to trigger search
         this.inputElement.addEventListener('input', () => this.performSearch());
     }
 
     organizeItemsByKey() {
         this.items
-            .filter(item => item && typeof item === 'object') // Only keep valid objects
+            .filter(item => item && typeof item === 'object')
             .forEach(item => {
                 Object.keys(item).forEach(key => {
-                    // If the key doesn't exist in itemsByKey, create an array for it
                     if (!this.itemsByKey[key]) {
                         this.itemsByKey[key] = [];
                     }
-                    // Add the item to the corresponding key's list
                     this.itemsByKey[key].push(item);
                 });
             });
@@ -118,22 +112,23 @@ class OctoPalm {
             return;
         }
 
-        // We'll store all the filtered items across all keys
-        const filteredResults = [];
+        const filteredResults = this.getFilteredResults(query);
+        this.displayResults(filteredResults);
+    }
 
-        // Search each key's items
+    getFilteredResults(query) {
+        const filteredResults = [];
         for (let key in this.itemsByKey) {
             const filteredItems = this.itemsByKey[key].filter(item => {
-                // Check if any of the values for this key contains the query
                 const value = item[key];
-                return value && value.toString().toLowerCase().includes(query);
+                return value && typeof value === 'string' && value.toLowerCase().includes(query);
             });
-
-            // Add the filtered items to the results
             filteredResults.push(...filteredItems);
         }
+        return filteredResults;
+    }
 
-        // Display the results
+    displayResults(filteredResults) {
         filteredResults.forEach(item => {
             const resultItem = document.createElement('div');
             resultItem.className = 'opalm-search-result-item';
