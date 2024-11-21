@@ -11,11 +11,11 @@ const items = [
     // Vehicle Parts
     { itemName: "Brake Pads", link: "/parts/brake-pads" },
     { itemName: "Air Filter", link: "/parts/air-filter" },
-    { itemName: "Oil Filter", link: "/parts/oil-filter" },
+    { itemName: "Oil Filter", link: "/parts/oil-filter", "emoji": "🛢️" },
     { itemName: "Alternator", link: "/parts/alternator" },
 
     // Accessories
-    { itemName: "Car Cover", link: "/accessories/car-cover" },
+    { label: "Car Cover", link: "/accessories/car-cover" },
     { itemName: "Dashboard Camera", link: "/accessories/dashboard-camera" },
     { itemName: "Seat Covers", link: "/accessories/seat-covers" },
     { itemName: "Floor Mats", link: "/accessories/floor-mats" },
