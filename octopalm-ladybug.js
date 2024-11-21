@@ -113,7 +113,8 @@ class OctoPalm {
         }
 
         const filteredResults = this.getFilteredResults(query);
-        this.displayResults(filteredResults);
+        const uniqueResults = this.removeDuplicates(filteredResults);
+        this.displayResults(uniqueResults);
     }
 
     getFilteredResults(query) {
@@ -126,6 +127,21 @@ class OctoPalm {
             filteredResults.push(...filteredItems);
         }
         return filteredResults;
+    }
+
+    removeDuplicates(items) {
+        const uniqueItems = [];
+        const seen = new Set();
+
+        items.forEach(item => {
+            const identifier = item.itemName || item.name || item.label || item.item || 'Unknown Item';
+            if (!seen.has(identifier)) {
+                seen.add(identifier);
+                uniqueItems.push(item);
+            }
+        });
+
+        return uniqueItems;
     }
 
     displayResults(filteredResults) {
