@@ -2,68 +2,39 @@
 
 // Sample data
 const items = [
-    // Vehicle Makes and Models
-    { itemName: "Toyota Camry", link: "/vehicles/toyota-camry" },
-    { itemName: "Honda Civic", link: "/vehicles/honda-civic" },
-    { itemName: "Ford F-150", link: "/vehicles/ford-f150" },
-    { itemName: "Chevrolet Silverado", link: "/vehicles/chevrolet-silverado" },
+    // Food
+    { label: "Apple", link: "/food/apple", emoji: "🍎" },
+    { label: "Banana", link: "/food/banana", emoji: "🍌" },
+    { label: "Orange Juice", link: "/food/orange-juice", emoji: "🍊" },
+    { label: "Burger", link: "/food/burger", emoji: "🍔" },
+    { label: "Pizza", link: "/food/pizza", emoji: "🍕" },
+    { label: "Coffee", link: "/food/coffee", emoji: "☕" },
+    { label: "Hotdog", link: "/food/hotdog", emoji: "🌭" },
+    { label: "Ice Cream", link: "/food/ice-cream", emoji: "🍦" },
+    { label: "Pasta", link: "/food/pasta", emoji: "🍝" },
+    { label: "Sushi", link: "/food/sushi", emoji: "🍣" },
 
-    // Vehicle Parts
-    { itemName: "Brake Pads", link: "/parts/brake-pads" },
-    { itemName: "Air Filter", link: "/parts/air-filter" },
-    { itemName: "Oil Filter", link: "/parts/oil-filter", "emoji": "🛢️" },
-    { itemName: "Alternator", link: "/parts/alternator" },
+    // Clothes
+    { label: "T-Shirt", link: "/clothes/t-shirt", emoji: "👕" },
+    { label: "Jeans", link: "/clothes/jeans", emoji: "👖" },
+    { label: "Jacket", link: "/clothes/jacket", emoji: "🧥" },
+    { label: "Sneakers", link: "/clothes/sneakers", emoji: "👟" },
+    { label: "Dress", link: "/clothes/dress", emoji: "👗" },
+    { label: "Sweater", link: "/clothes/sweater", emoji: "🧣" },
 
-    // Accessories
-    { label: "Car Cover", link: "/accessories/car-cover" },
-    { itemName: "Dashboard Camera", link: "/accessories/dashboard-camera" },
-    { itemName: "Seat Covers", link: "/accessories/seat-covers" },
-    { itemName: "Floor Mats", link: "/accessories/floor-mats" },
+    // Vehicles
+    { label: "Car", link: "/vehicles/car", emoji: "🚗" },
+    { label: "Motorcycle", link: "/vehicles/motorcycle", emoji: "🏍️" },
+    { label: "Bicycle", link: "/vehicles/bicycle", emoji: "🚲" },
+    { label: "Truck", link: "/vehicles/truck", emoji: "🚚" },
 
-    // Services
-    { itemName: "Oil Change Service", link: "/services/oil-change" },
-    { itemName: "Tire Rotation", link: "/services/tire-rotation" },
-    { itemName: "Brake Inspection", link: "/services/brake-inspection" },
-    { itemName: "Engine Diagnostic", link: "/services/engine-diagnostic" },
-
-    // Promotions and Specials
-    { itemName: "Winter Tire Sale", link: "/promotions/winter-tire-sale" },
-    { itemName: "Oil Change Discount", link: "/promotions/oil-change-discount" },
-    { itemName: "Free Brake Inspection", link: "/promotions/free-brake-inspection" },
-    { itemName: "Buy 1 Get 1 Free Accessories", link: "/promotions/buy-1-get-1-free-accessories" },
-
-    // Web Navigation
-    { itemName: "Home", link: "/" },
-    { itemName: "About Us", link: "/about" },
-    { itemName: "Contact Us", link: "/contact" },
-    { itemName: "FAQ", link: "/faq" },
-    { itemName: "Blog", link: "/blog" },
-
-    // Brands
-    { itemName: "Bosch", link: "/brands/bosch" },
-    { itemName: "Denso", link: "/brands/denso" },
-    { itemName: "Michelin", link: "/brands/michelin" },
-    { itemName: "Goodyear", link: "/brands/goodyear" },
-
-    // Vehicle Types
-    { itemName: "Sedans", link: "/vehicles/sedans" },
-    { itemName: "SUVs", link: "/vehicles/suvs" },
-    { itemName: "Trucks", link: "/vehicles/trucks" },
-    { itemName: "Hybrids", link: "/vehicles/hybrids" },
-
-    // Locations
-    { itemName: "New York Store", link: "/locations/new-york" },
-    { itemName: "Los Angeles Store", link: "/locations/los-angeles" },
-    { itemName: "Chicago Store", link: "/locations/chicago" },
-    { itemName: "Houston Store", link: "/locations/houston" },
-
-    // Frequently Searched Items
-    { itemName: "Headlight Bulbs", link: "/parts/headlight-bulbs" },
-    { itemName: "Windshield Wipers", link: "/parts/windshield-wipers" },
-    { itemName: "Battery", link: "/parts/battery" },
-    { itemName: "Transmission Fluid", link: "/parts/transmission-fluid" }
+    // Health
+    { label: "Vitamins", link: "/health/vitamins", emoji: "💊" },
+    { label: "First Aid Kit", link: "/health/first-aid-kit", emoji: "🩹" },
+    { label: "Yoga Mat", link: "/health/yoga-mat", emoji: "🧘‍♀️" },
+    { label: "Dumbbells", link: "/health/dumbbells", emoji: "🏋️‍♂️" },
+    { label: "Thermometer", link: "/health/thermometer", emoji: "🌡️" }
 ];
-
 
 
 new OctoPalm('search-input', items);
