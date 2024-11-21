@@ -2,6 +2,7 @@ class OctoPalm {
     constructor(inputId, items) {
         this.inputElement = document.getElementById(inputId);
         this.items = items;
+        this.itemsByKey = {};
         this.resultsContainer = this.createResultsContainer();
         this.injectStyles();
 
@@ -14,7 +15,26 @@ class OctoPalm {
             return;
         }
 
+        // Organize items by their keys
+        this.organizeItemsByKey();
+
+        // Listen for input event to trigger search
         this.inputElement.addEventListener('input', () => this.performSearch());
+    }
+
+    organizeItemsByKey() {
+        this.items
+            .filter(item => item && typeof item === 'object') // Only keep valid objects
+            .forEach(item => {
+                Object.keys(item).forEach(key => {
+                    // If the key doesn't exist in itemsByKey, create an array for it
+                    if (!this.itemsByKey[key]) {
+                        this.itemsByKey[key] = [];
+                    }
+                    // Add the item to the corresponding key's list
+                    this.itemsByKey[key].push(item);
+                });
+            });
     }
 
     createResultsContainer() {
@@ -98,24 +118,34 @@ class OctoPalm {
             return;
         }
 
-        const possibleKeys = ['itemName', 'name', 'label', 'item'];
-        const filteredItems = this.items.filter(item => {
-            try {
-                const key = possibleKeys.find(k => k in item && typeof item[k] === 'string');
-                return key && item[key].toLowerCase().includes(query);
-            } catch (error) {
-                console.warn('Error while filtering item:', item, error);
-                return false;
-            }
-        });
+        // We'll store all the filtered items across all keys
+        const filteredResults = [];
 
-        filteredItems.forEach(item => {
+        // Search each key's items
+        for (let key in this.itemsByKey) {
+            const filteredItems = this.itemsByKey[key].filter(item => {
+                // Check if any of the values for this key contains the query
+                const value = item[key];
+                return value && value.toString().toLowerCase().includes(query);
+            });
+
+            // Add the filtered items to the results
+            filteredResults.push(...filteredItems);
+        }
+
+        // Display the results
+        filteredResults.forEach(item => {
             const resultItem = document.createElement('div');
             resultItem.className = 'opalm-search-result-item';
-            resultItem.innerHTML = `<a href="${item.link}">${item.itemName}</a>`;
+            const itemName = item.itemName || item.name || item.label || item.item || 'Unknown Item';
+            resultItem.innerHTML = `<a href="${item.link}">${itemName}</a>`;
             this.resultsContainer.appendChild(resultItem);
         });
 
-        this.resultsContainer.classList.add('show');
+        if (filteredResults.length > 0) {
+            this.resultsContainer.classList.add('show');
+        } else {
+            this.resultsContainer.classList.remove('show');
+        }
     }
 }
