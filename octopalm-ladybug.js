@@ -5,7 +5,6 @@ class OctoPalm {
         this.itemsByKey = {};
         this.resultsContainer = this.createResultsContainer();
         this.injectStyles();
-
         this.initialize();
     }
 
